@@ -1,0 +1,1 @@
+# fullstackopen-jkaartti-osa7
