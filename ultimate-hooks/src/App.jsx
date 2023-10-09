@@ -17,11 +17,19 @@ const useField = (type) => {
 
 const useResource = (baseUrl) => {
   const [resources, setResources] = useState([])
-
-  // ...
-
-  const create = (resource) => {
-    // ...
+  
+  useEffect(() => {
+    const getAll = async () => {
+      const response = await axios.get(baseUrl)
+      setResources(response.data)
+    }
+    getAll()
+  }, [])
+  
+  const create = async (resource) => {
+    const response = await axios.post(baseUrl, resource)
+    const newResources = [...resources, response.data]
+    setResources(newResources)
   }
 
   const service = {
